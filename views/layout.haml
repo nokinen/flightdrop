@@ -5,11 +5,17 @@
 			%link{rel: "stylesheet", href: "/css/bootstrap.css"}
 			%link{rel: "stylesheet", href: "/stylesheet.css"}
 			%script{src: "http://code.jquery.com/jquery-latest.js"}
+			%script{src: "js/bootstrap.js"}
 			%script{src: "js/drop.js"}
 			%title= @title
 		%body
 			#main
 				.container
+					%h1.page-header= "Flight Data Converter"
+					- if flash[:notice]
+						.alert.alert-error
+							<button type="button" class="close" data-dismiss="alert">×</button>
+							=flash[:notice]
 					=yield
 					#push
 			#footer

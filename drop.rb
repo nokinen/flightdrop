@@ -2,7 +2,10 @@ require "sinatra"
 require "haml"
 require "sass"
 require "fdc"
-require "debugger"
+require 'rack-flash'
+
+enable :sessions
+use Rack::Flash
 
 get "/" do
   haml :drop, format: :html5
@@ -19,8 +22,13 @@ post "/convert" do
   filename = File.basename(filename, File.extname(filename))
   
   converter = Fdc::Converter.new
-  converter.parse_str data
-  converter.compile name: filename
+  begin
+    converter.parse_str data
+    converter.compile name: filename
+  rescue => e
+    flash[:notice] = e.message
+    redirect "/"
+  end
   
   content_type :kml
   attachment filename
