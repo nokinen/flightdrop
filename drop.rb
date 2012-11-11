@@ -18,23 +18,23 @@ end
 post "/convert" do
 
   data = params[:data]
-  orig_filename = params[:filename]
-  filename = File.basename(orig_filename, File.extname(orig_filename))
+  filename = params[:filename]
+  basename = File.basename(filename, File.extname(filename))
   
   converter = Fdc::Converter.new
   begin
     converter.parse_str data
-    converter.compile name: filename, 
+    converter.compile name: basename, 
       gps: params[:gps], 
       clamp: params[:clamp], 
       extrude: params[:extrude]
   rescue => e
-    flash[:notice] = "#{orig_filename} could not be converted: #{e.message}"
+    flash[:notice] = "#{filename} could not be converted: #{e.message}"
     redirect "/"
   end
   
   content_type :kml
-  attachment filename
+  attachment "#{basename}.kml"
   converter.kml
   
 end
