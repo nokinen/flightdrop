@@ -1,0 +1,17 @@
+!!!
+%html
+	%body
+		%head
+			%link{rel: "stylesheet", href: "/css/bootstrap.css"}
+			%link{rel: "stylesheet", href: "/stylesheet.css"}
+			%script{src: "http://code.jquery.com/jquery-latest.js"}
+			%script{src: "js/drop.js"}
+			%title= @title
+		%body
+			#main
+				.container
+					=yield
+					#push
+			#footer
+				.container
+					%p FDC on <a href="http://github.com/nokinen/fdc">Github</a>
