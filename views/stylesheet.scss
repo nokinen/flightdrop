@@ -30,6 +30,7 @@ html, body {
 	border-radius:15px;
 	text-align:center;
 	background-color: #f5f5f5;
+	margin-bottom:20px;
 }
 
 #hint {
@@ -40,6 +41,6 @@ html, body {
 	color: lightgrey;
 }
 
-#meta{
-	display:none;
+.hidden{
+	display: none;
 }

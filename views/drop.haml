@@ -1,5 +1,12 @@
 #dropzone
 	#hint Drop .igc file here
-%form#meta{method: "POST", action: "/convert"}
-	%textarea#data{name: "data"}
-	%input#filename{name: "filename"}
+%form{method: "POST", action: "/convert"}
+	%legend Options
+	%textarea#data.hidden{name: "data"}
+	%input#filename.hidden{name: "filename"}
+	%label.checkbox
+		%input{type: "checkbox", name: "clamp"} Clamp track to ground
+	%label.checkbox
+		%input{type: "checkbox", name: "gps"} Use GPS altitude instead of air pressure
+	%label.checkbox
+		%input{type: "checkbox", name: "extrude"} Extrude track to ground

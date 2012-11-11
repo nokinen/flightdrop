@@ -20,7 +20,7 @@ function drop(event) {
 	reader.onloadend = function(e){
 		$("#data").val(e.target.result);
 		$("#filename").val(file.name);
-		$("#meta").submit();
+		$("form").submit();
 	}
 	reader.readAsText(file);
 }

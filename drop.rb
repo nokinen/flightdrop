@@ -18,15 +18,15 @@ end
 post "/convert" do
   
   data = params[:data]
-  filename = params[:filename]
-  filename = File.basename(filename, File.extname(filename))
+  orig_filename = params[:filename]
+  filename = File.basename(orig_filename, File.extname(orig_filename))
   
   converter = Fdc::Converter.new
   begin
     converter.parse_str data
     converter.compile name: filename
   rescue => e
-    flash[:notice] = e.message
+    flash[:notice] = "#{orig_filename} could not be converted: #{e.message}"
     redirect "/"
   end
   
