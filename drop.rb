@@ -16,7 +16,7 @@ get "/stylesheet.css" do
 end
 
 post "/convert" do
-  
+
   data = params[:data]
   orig_filename = params[:filename]
   filename = File.basename(orig_filename, File.extname(orig_filename))
@@ -24,7 +24,10 @@ post "/convert" do
   converter = Fdc::Converter.new
   begin
     converter.parse_str data
-    converter.compile name: filename
+    converter.compile name: filename, 
+      gps: params[:gps], 
+      clamp: params[:clamp], 
+      extrude: params[:extrude]
   rescue => e
     flash[:notice] = "#{orig_filename} could not be converted: #{e.message}"
     redirect "/"
