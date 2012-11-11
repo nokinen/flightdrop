@@ -14,12 +14,16 @@ end
 
 post "/convert" do
   
+  data = params[:data]
+  filename = params[:filename]
+  filename = File.basename(filename, File.extname(filename))
+  
   converter = Fdc::Converter.new
-  converter.parse_str params[:data]
-  converter.compile name: "hello"
+  converter.parse_str data
+  converter.compile name: filename
   
   content_type :kml
-  attachment "hello"
+  attachment filename
   converter.kml
   
 end

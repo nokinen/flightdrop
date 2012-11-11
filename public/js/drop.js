@@ -7,11 +7,8 @@ $(function(){
 function drop(event) {
 	event.preventDefault();
 	
-	var files = event.originalEvent.dataTransfer.files;
-	
-	console.log("Dropped files:");
-	for(i = 0; i< files.length; i++)
-		console.info(files[i].name);
+	var file = event.originalEvent.dataTransfer.files[0];
+	console.log("Dropped file:" + file.name);
 		
 	// Read files with FileReader
 	if(!window.FileReader){
@@ -22,9 +19,10 @@ function drop(event) {
 	var reader = new FileReader();
 	reader.onloadend = function(e){
 		$("#data").val(e.target.result);
+		$("#filename").val(file.name);
 		$("#meta").submit();
 	}
-	reader.readAsText(files[0]);
+	reader.readAsText(file);
 }
 
 function allowDrop(event){

@@ -1,6 +1,7 @@
 - @title = "Flight Data Converter"
 %h1.page-header= @title
 #dropzone
-	.hint Drop .igc files here
+	.hint Drop .igc file here
 %form#meta{method: "POST", action: "/convert"}
 	%textarea#data{name: "data"}
+	%input#filename{name: "filename"}
