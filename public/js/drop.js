@@ -1,5 +1,5 @@
 $(function(){
-	dropzone = $("#dropzone");
+	var dropzone = $("#dropzone");
 	dropzone.on("dragover",allowDrop);
 	dropzone.on("drop",drop);
 });
