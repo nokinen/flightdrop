@@ -2,5 +2,5 @@
 %h1.page-header= @title
 #dropzone
 	.hint Drop .igc files here
-%form.meta{method: "POST", action: "/convert"}
-	%input{type: "text", name: "data"}
+%form#meta{method: "POST", action: "/convert"}
+	%textarea#data{name: "data"}
