@@ -2,7 +2,7 @@ $(function(){
 	
 	// Read files with FileReader
 	if(!window.FileReader){
-		$("#main .page-header").after('<div class="alert alert-block"><h4>Unsupported Browser</h4>Use a modern browser such as Chrome, Safari or Firefox to access this page.</div>');
+		$("#main .page-header").after('<div class="alert alert-block"><h4>Unsupported Browser!</h4>Use the latest version of Chrome, Safari or Firefox to access this page.</div>');
 		console.error("FileReader API not supported by this browser");
 		return;
 	}
